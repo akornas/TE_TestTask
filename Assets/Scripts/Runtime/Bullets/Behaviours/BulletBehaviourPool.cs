@@ -17,6 +17,11 @@ public class BulletBehaviourPool : MonoBehaviour
 
 	private IObjectPool<BulletBehaviour> _pool;
 
+	private void OnEnable()
+	{
+		InitializePool();
+	}
+
 	private void InitializePool()
 	{
 		_pool = new ObjectPool<BulletBehaviour>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, _collectionChecks, _initialSize, _maxSize);
@@ -47,11 +52,6 @@ public class BulletBehaviourPool : MonoBehaviour
 
 	public BulletBehaviour GetBehaviour()
 	{
-		if (_pool == null)
-		{
-			InitializePool();
-		}
-
 		return _pool.Get();
 	}
 

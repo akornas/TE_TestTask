@@ -8,10 +8,16 @@ public class Bullet : MonoBehaviour
 
 	private BulletPool _bulletPool;
 	private readonly List<BulletBehaviour> _behaviours = new();
+	private HitData _hitData;
 
 	public void Initialize(BulletPool bulletPool)
 	{
 		_bulletPool = bulletPool;
+	}
+
+	public void SetHitData(HitData hitData)
+	{
+		_hitData = hitData;
 	}
 
 	public void AddBehaviour(BulletBehaviour bulletBehaviour)
@@ -57,7 +63,7 @@ public class Bullet : MonoBehaviour
 	{
 		if (collision.gameObject.TryGetComponent<IHitable>(out var hitable))
 		{
-			hitable.Hit(new HitData(1));
+			hitable.Hit(_hitData);
 		}
 	}
 }

@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97318ac489642543952714cc8bd9d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explodeActionReference: {fileID: -3845349614667050099, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _playerData: {fileID: 11400000, guid: 06aabb6ba38a561409d2b8d61b789003, type: 2}
+  _explodeActionReference: {fileID: 1186425662084205548, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &8462334410510103679
 GameObject:
   m_ObjectHideFlags: 0

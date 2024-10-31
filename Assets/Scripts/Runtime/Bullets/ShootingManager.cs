@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class BulletManager : MonoBehaviour
+public class ShootingManager : MonoBehaviour
 {
+	[SerializeField]
+	private CooldownManager _cooldownManager;
+
 	[SerializeField]
 	private InputController _inputController;
 
@@ -38,6 +41,7 @@ public class BulletManager : MonoBehaviour
 			_lastShootTime = Time.timeSinceLevelLoad;
 			var bullet = _bulletPool.GetBullet();
 			bullet.transform.position = _spawnPlace.position;
+			bullet.SetHitData(_playerData.GetBaseHitData());
 		}
 	}
 
@@ -48,11 +52,16 @@ public class BulletManager : MonoBehaviour
 
 	private void OnUseSkill()
 	{
-		var bullet = _bulletPool.GetBullet();
-		bullet.transform.position = _spawnPlace.position;
+		if (_cooldownManager.CanUseSkill(_playerData.SkillData.Enum))
+		{
+			var bullet = _bulletPool.GetBullet();
+			bullet.transform.position = _spawnPlace.position;
+			bullet.SetHitData(_playerData.GetBaseHitData());
 
-		var behaviour = _bulletBehaviourFactory.GetBehaviourFor(_playerData.SkillEnum);
-		bullet.AddBehaviour(behaviour);
+			var behaviour = _bulletBehaviourFactory.GetBehaviourFor(_playerData.SkillData.Enum);
+			bullet.AddBehaviour(behaviour);
+			_cooldownManager.AddSkillCooldown(_playerData.SkillData);
+		}
 	}
 
 	private void OnDisable()

@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 public class ExplodeOnActionBehaviour : BulletBehaviour
 {
 	[SerializeField]
+	private PlayerData _playerData;
+
+	[SerializeField]
 	private InputActionReference _explodeActionReference;
 
 	private void OnEnable()
@@ -25,7 +28,7 @@ public class ExplodeOnActionBehaviour : BulletBehaviour
 		{
 			if (hitCollider.TryGetComponent<IHitable>(out var hitable))
 			{
-				hitable.Hit(new HitData(1));
+				hitable.Hit(_playerData.GetBaseHitData());
 			}
 		}
 	}
