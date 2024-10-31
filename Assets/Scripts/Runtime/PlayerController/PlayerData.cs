@@ -12,4 +12,6 @@ public class PlayerData : ScriptableObject
 	[field: SerializeField]
 	public float ShootDelay { get; private set; }
 
+	[field: SerializeField]
+	public SkillScriptableEnum SkillEnum { get; private set; }
 }

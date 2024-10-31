@@ -9,6 +9,9 @@ public class BulletManager : MonoBehaviour
 	private BulletPool _bulletPool;
 
 	[SerializeField]
+	private BulletBehaviourFactory _bulletBehaviourFactory;
+
+	[SerializeField]
 	private PlayerData _playerData;
 
 	[SerializeField]
@@ -45,6 +48,11 @@ public class BulletManager : MonoBehaviour
 
 	private void OnUseSkill()
 	{
+		var bullet = _bulletPool.GetBullet();
+		bullet.transform.position = _spawnPlace.position;
+
+		var behaviour = _bulletBehaviourFactory.GetBehaviourFor(_playerData.SkillEnum);
+		bullet.AddBehaviour(behaviour);
 	}
 
 	private void OnDisable()

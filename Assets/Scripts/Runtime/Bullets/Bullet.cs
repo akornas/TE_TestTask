@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
 {
 	[SerializeField]
 	private Transform _behavioursRoot;
+
 	private BulletPool _bulletPool;
 	private readonly List<BulletBehaviour> _behaviours = new();
 
@@ -16,7 +17,17 @@ public class Bullet : MonoBehaviour
 	public void AddBehaviour(BulletBehaviour bulletBehaviour)
 	{
 		bulletBehaviour.transform.SetParent(_behavioursRoot);
+		bulletBehaviour.transform.localPosition = Vector3.zero;
+
+		bulletBehaviour.OnReleasedEvent += OnReleasedBehaviour;
 		_behaviours.Add(bulletBehaviour);
+	}
+
+	private void OnReleasedBehaviour(BulletBehaviour releasedBehaviour)
+	{
+		releasedBehaviour.OnReleasedEvent -= OnReleasedBehaviour;
+		BackToPool();
+		_behaviours.Remove(releasedBehaviour);
 	}
 
 	public void BackToPool()
@@ -35,15 +46,18 @@ public class Bullet : MonoBehaviour
 	{
 		foreach (var behaviour in _behaviours)
 		{
+			behaviour.OnReleasedEvent -= OnReleasedBehaviour;
 			behaviour.ActionOnHit();
 		}
+
+		_behaviours.Clear();
 	}
 
 	private void HandleHitable(Collision collision)
 	{
 		if (collision.gameObject.TryGetComponent<IHitable>(out var hitable))
 		{
-			hitable.Hit(null);
+			hitable.Hit(new HitData(1));
 		}
 	}
 }

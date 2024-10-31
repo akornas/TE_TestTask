@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 370aeda3c5d9c6c4f9ddb5051b106bc9, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 8ce910b5c9c12244a8a94d3c8248eae1, type: 3}
+  m_Name: DebugLogSkill
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
-  <MoveSpeed>k__BackingField: 5
-  <ShootDelay>k__BackingField: 0.1
-  <SkillEnum>k__BackingField: {fileID: 11400000, guid: 212b0cb1498612549af14f7f3cfc4564, type: 2}
