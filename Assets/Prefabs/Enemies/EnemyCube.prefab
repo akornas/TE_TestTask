@@ -141,6 +141,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 996835098194748548, guid: a7ead02d7b66ccb4dbb8c9b8d818466f, type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 7864244281789681384}
     - target: {fileID: 1572541358371356699, guid: a7ead02d7b66ccb4dbb8c9b8d818466f, type: 3}
       propertyPath: m_Name
       value: EnemyCube

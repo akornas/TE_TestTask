@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a80f84be6a76454197bac8a78e91da8, type: 2}
+  - {fileID: 2100000, guid: e921d9367d4ed5c47b1b5e848db48bff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,6 +141,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 996835098194748548, guid: a7ead02d7b66ccb4dbb8c9b8d818466f, type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 2492383672520660606}
     - target: {fileID: 1572541358371356699, guid: a7ead02d7b66ccb4dbb8c9b8d818466f, type: 3}
       propertyPath: m_Name
       value: EnemyCubeBig

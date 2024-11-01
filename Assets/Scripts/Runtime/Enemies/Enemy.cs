@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
 	[SerializeField]
 	private ScriptableEventWithEnemyData _eventWithEnemyData;
 
+	[SerializeField]
+	private Renderer _renderer;
+
 	private EnemyData _data;
 
 	public void Initialize(EnemyData data)
@@ -20,6 +23,7 @@ public class Enemy : MonoBehaviour
 		_damageable.SetupHealth(_data.Health);
 		_moveRootOnUpdate.SetSpeedMultiplier(_data.SpeedMultiplier);
 		_damageable.OnDeathEvent += OnDeath;
+		_renderer.material.color = ColorHelper.GetRandomColor();
 	}
 
 	private void OnDeath()
