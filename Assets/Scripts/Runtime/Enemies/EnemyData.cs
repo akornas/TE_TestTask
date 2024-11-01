@@ -14,10 +14,10 @@ public class EnemyData : ScriptableObject
 	public float Health { get; private set; }
 
 	[field: SerializeField]
-	public float Score { get; private set; }
+	public int Score { get; private set; }
 
 	[field: SerializeField]
-	public float Xp { get; private set; }
+	public int Xp { get; private set; }
 
 	[field: SerializeField]
 	public Enemy Prefab { get; private set; }

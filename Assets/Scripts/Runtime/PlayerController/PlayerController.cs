@@ -11,9 +11,19 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private Transform _root;
 
+	[SerializeField]
+	private ScriptableEventWithEnemyData _eventWithEnemyData;
+
 	private void OnEnable()
 	{
 		_inputController.OnMoveEvent += OnMove;
+		_eventWithEnemyData.OnEvent += OnEnemyKilled;
+	}
+
+	private void OnEnemyKilled(EnemyData obj)
+	{
+		_playerData.AddXp(obj.Xp);
+		_playerData.GameplayData.Score += obj.Score;
 	}
 
 	private void OnMove(Vector2 moveVector)
@@ -26,5 +36,6 @@ public class PlayerController : MonoBehaviour
 	private void OnDisable()
 	{
 		_inputController.OnMoveEvent -= OnMove;
+		_eventWithEnemyData.OnEvent -= OnEnemyKilled;
 	}
 }

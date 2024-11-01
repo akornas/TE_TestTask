@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8749817f67393584cb835d93028234f5, type: 3}
-  m_Name: ExplodeOnActionSkillData
+  m_Script: {fileID: 11500000, guid: 67201bd0a84e0524984e8f34c0a34864, type: 3}
+  m_Name: EventWithEnemyData
   m_EditorClassIdentifier: 
-  <Enum>k__BackingField: {fileID: 11400000, guid: 212b0cb1498612549af14f7f3cfc4564, type: 2}
-  <Cooldown>k__BackingField:
-    _valuePerLevel:
-    - 7
-    - 6
-    - 1

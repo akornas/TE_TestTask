@@ -10,8 +10,10 @@ public abstract class AbstractValuePerLevel<T>
 	{
 		return level < _valuePerLevel.Length ?
 			_valuePerLevel[level] :
-			_valuePerLevel[_valuePerLevel.Length - 1];
+			_valuePerLevel[MaxLevel];
 	}
+
+	public int MaxLevel => _valuePerLevel.Length - 1;
 }
 
 [Serializable]

@@ -617,6 +617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageable: {fileID: 4575181393098422669}
   _moveRootOnUpdate: {fileID: 1628413122534426137}
+  _eventWithEnemyData: {fileID: 11400000, guid: 70564a8dd6972a64a8ed7eec13c45b8b, type: 2}
 --- !u!54 &4990397428683467409
 Rigidbody:
   m_ObjectHideFlags: 0

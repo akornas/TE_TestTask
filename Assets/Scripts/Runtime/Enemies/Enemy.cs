@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
 	[SerializeField]
 	private MoveRootOnUpdate _moveRootOnUpdate;
 
+	[SerializeField]
+	private ScriptableEventWithEnemyData _eventWithEnemyData;
+
 	private EnemyData _data;
 
 	public void Initialize(EnemyData data)
@@ -21,7 +24,7 @@ public class Enemy : MonoBehaviour
 
 	private void OnDeath()
 	{
-		//Gdy gracz go zabije
+		_eventWithEnemyData?.Invoke(_data);
 	}
 
 	private void OnTriggerEnter(Collider other)

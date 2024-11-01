@@ -29,6 +29,26 @@ public class PlayerData : ScriptableObject
 	{
 		return new HitData(Damage.ValuePerLevel(GameplayData.Level));
 	}
+
+	public void AddXp(int value)
+	{
+		GameplayData.Xp += value;
+		CheckPlayerLevelUp();
+	}
+
+	private void CheckPlayerLevelUp()
+	{
+		if (CanLevelUp())
+		{
+			GameplayData.Level += 1;
+		}
+	}
+
+	private bool CanLevelUp()
+	{
+		return GameplayData.Xp >= XpNeededForLevel.ValuePerLevel(GameplayData.Level + 1) &&
+			GameplayData.Level < XpNeededForLevel.MaxLevel;
+	}
 }
 
 [Serializable]
@@ -44,7 +64,6 @@ public class GameplayPlayerData
 
 	[SerializeField]
 	private int _level = 0;
-
 
 	public int Score
 	{
@@ -91,6 +110,4 @@ public class GameplayPlayerData
 		_xp = 0;
 		_level = 0;
 	}
-
-
 }
