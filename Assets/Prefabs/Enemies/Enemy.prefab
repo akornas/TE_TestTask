@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6513185532043796918}
   - component: {fileID: 1690380665002053103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RestoreHealthIfLessThanOnEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 6849088638262882531}
   - component: {fileID: 5395912099734007221}
   - component: {fileID: 4074171378068830685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1742557688810841848}
   - component: {fileID: 1628413122534426137}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3504434097747069235}
   - component: {fileID: 8023195304276407741}
   - component: {fileID: 8681600243949568449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 44594156404344511}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EventListeners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 4321495597405083374}
   - component: {fileID: 5684283171681568335}
   - component: {fileID: 6994062245643621799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Speed_Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 7098800806972125541}
   - component: {fileID: 996835098194748548}
   - component: {fileID: 4990397428683467409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,6 +618,7 @@ MonoBehaviour:
   _damageable: {fileID: 4575181393098422669}
   _moveRootOnUpdate: {fileID: 1628413122534426137}
   _eventWithEnemyData: {fileID: 11400000, guid: 70564a8dd6972a64a8ed7eec13c45b8b, type: 2}
+  _renderer: {fileID: 0}
 --- !u!54 &4990397428683467409
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -655,7 +656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2151321646200128783}
   - component: {fileID: 6800259187629671564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +706,7 @@ GameObject:
   - component: {fileID: 9101608010763345086}
   - component: {fileID: 4153574020306612752}
   - component: {fileID: 6860001593403209057}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hp_Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +884,7 @@ GameObject:
   - component: {fileID: 2112072699548775795}
   - component: {fileID: 7541072361939225320}
   - component: {fileID: 4575181393098422669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Damageable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -978,7 +979,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7213604095904688349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1072432713378010420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Logic
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,10 +15,12 @@ public class Enemy : MonoBehaviour
 	private Renderer _renderer;
 
 	private EnemyData _data;
+	private EnemyPool _pool;
 
-	public void Initialize(EnemyData data)
+	public void Initialize(EnemyData data, EnemyPool pool)
 	{
 		_data = data;
+		_pool = pool;
 
 		_damageable.SetupHealth(_data.Health);
 		_moveRootOnUpdate.SetSpeedMultiplier(_data.SpeedMultiplier);
@@ -49,6 +51,6 @@ public class Enemy : MonoBehaviour
 
 	private void BackToPool()
 	{
-		Destroy(this.gameObject);
+		_pool.Release(this);
 	}
 }

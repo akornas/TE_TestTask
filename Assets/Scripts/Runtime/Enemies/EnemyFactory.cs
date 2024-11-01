@@ -8,10 +8,21 @@ public class EnemyFactory : AbstractEnemyFactory
 
 	[SerializeField]
 	private List<int> _percentageSpawnChance = new();
+	private readonly Dictionary<EnemyData, EnemyPool> _enemyPools = new();
 
 	private void OnEnable()
 	{
+		CreateEnemyPools();
 		FillPercentageSpawnChanceList();
+	}
+
+	private void CreateEnemyPools()
+	{
+		for (int i = 0; i < _enemies.Count; i++)
+		{
+			var pool = new EnemyPool(_enemies[i].Prefab);
+			_enemyPools.Add(_enemies[i], pool);
+		}
 	}
 
 	private void FillPercentageSpawnChanceList()
@@ -32,9 +43,12 @@ public class EnemyFactory : AbstractEnemyFactory
 		{
 			if (randomNumber < _percentageSpawnChance[i])
 			{
-				var enemy = Instantiate(_enemies[i].Prefab);
-				enemy.Initialize(_enemies[i]);
-				return Instantiate(_enemies[i].Prefab);
+				var pool = _enemyPools[_enemies[i]];
+				var enemy = pool.Get();
+
+				enemy.Initialize(_enemies[i], pool);
+				enemy.transform.SetParent(this.transform);
+				return enemy;
 			}
 		}
 
