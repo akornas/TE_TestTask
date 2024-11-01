@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SpawnChance>k__BackingField: 10
   <SpeedMultiplier>k__BackingField: 1.5
-  <Health>k__BackingField: 1
-  <Score>k__BackingField: 0
+  <Health>k__BackingField: 2
+  <Score>k__BackingField: 10
   <Xp>k__BackingField: 5
   <Prefab>k__BackingField: {fileID: 2301746910863818401, guid: 268acb6b0d8855149a60649016896294, type: 3}
   <AttackPlayerEvents>k__BackingField:

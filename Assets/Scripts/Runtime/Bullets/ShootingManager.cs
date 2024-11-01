@@ -39,7 +39,7 @@ public class ShootingManager : MonoBehaviour
 		if (CanShoot())
 		{
 			_lastShootTime = Time.timeSinceLevelLoad;
-			var bullet = _bulletPool.GetBullet();
+			var bullet = _bulletPool.Get();
 			bullet.transform.position = _spawnPlace.position;
 			bullet.SetHitData(_playerData.GetBaseHitData());
 		}
@@ -54,7 +54,7 @@ public class ShootingManager : MonoBehaviour
 	{
 		if (_cooldownManager.CanUseSkill(_playerData.SkillData.Enum))
 		{
-			var bullet = _bulletPool.GetBullet();
+			var bullet = _bulletPool.Get();
 			bullet.transform.position = _spawnPlace.position;
 			bullet.SetHitData(_playerData.GetBaseHitData());
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   <SpawnChance>k__BackingField: 25
   <SpeedMultiplier>k__BackingField: 1.5
   <Health>k__BackingField: 1
-  <Score>k__BackingField: 0
+  <Score>k__BackingField: 2
   <Xp>k__BackingField: 5
   <Prefab>k__BackingField: {fileID: 8198950710468231770, guid: 73f03ae6eed63444184f3838d38eda2c, type: 3}
   <AttackPlayerEvents>k__BackingField:
