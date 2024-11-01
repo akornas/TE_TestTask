@@ -1,8 +1,8 @@
 public readonly struct HitData
 {
-	public int Damage { get; }
+	public float Damage { get; }
 
-	public HitData(int damage)
+	public HitData(float damage)
 	{
 		Damage = damage;
 	}

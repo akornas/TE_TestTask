@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CooldownManager : MonoBehaviour
 {
+	[SerializeField]
+	private PlayerData _playerData;
+
 	public event System.Action OnRefreshSkillOnCooldownEvent;
 
 	private SkillData _skillOnCooldown;
@@ -18,7 +21,7 @@ public class CooldownManager : MonoBehaviour
 	public void AddSkillCooldown(SkillData skillData)
 	{
 		_skillOnCooldown = skillData;
-		_currentCooldownTime = _skillOnCooldown.Cooldown;
+		_currentCooldownTime = _skillOnCooldown.Cooldown.ValuePerLevel(_playerData.GameplayData.Level);
 	}
 
 	private void Update()

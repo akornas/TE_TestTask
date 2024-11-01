@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 		_data = data;
 
 		_damageable.SetupHealth(_data.Health);
-		_moveRootOnUpdate.AddSpeedMultiplier(_data.SpeedMultiplier);
+		_moveRootOnUpdate.SetSpeedMultiplier(_data.SpeedMultiplier);
 		_damageable.OnDeathEvent += OnDeath;
 	}
 
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		_damageable.OnDeathEvent -= OnDeath;
-		//Attack Player
+
 		InvokeEvents();
 		BackToPool();
 	}

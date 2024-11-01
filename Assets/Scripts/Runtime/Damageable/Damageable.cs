@@ -42,7 +42,6 @@ public class Damageable : MonoBehaviour
 	{
 		_health -= hitData.Damage;
 		OnChangeHealthEvent?.Invoke();
-
 		CheckDeath();
 	}
 

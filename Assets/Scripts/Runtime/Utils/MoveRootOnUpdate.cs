@@ -17,9 +17,15 @@ public class MoveRootOnUpdate : MonoBehaviour
 
 	public float Speed => _speed * _speedMultiplier;
 
-	public void AddSpeedMultiplier(float multiplier)
+	public void SetSpeedMultiplier(float multiplier)
 	{
 		_speedMultiplier = multiplier;
+		OnChangeSpeedEvent?.Invoke();
+	}
+
+	public void AddSpeedMultiplier(float valueToAdd)
+	{
+		_speedMultiplier += valueToAdd;
 		OnChangeSpeedEvent?.Invoke();
 	}
 

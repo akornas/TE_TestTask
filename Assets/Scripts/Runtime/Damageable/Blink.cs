@@ -1,11 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class Blink : MonoBehaviour
+public class Blink : AbstractOnHit
 {
-	[SerializeField]
-	private Hitable _hitable;
-
 	[SerializeField]
 	private Renderer _renderer;
 
@@ -17,13 +14,12 @@ public class Blink : MonoBehaviour
 
 	private Material _cachedMaterial;
 
-	private void OnEnable()
+	protected override void InternalOnEnable()
 	{
-		_hitable.OnHitEvent += OnTakeHit;
 		_cachedMaterial = _renderer.material;
 	}
 
-	private void OnTakeHit(HitData hitData)
+	protected override void OnTakeHit(HitData hitData)
 	{
 		StartCoroutine(BlinkCoroutine());
 	}
@@ -33,10 +29,5 @@ public class Blink : MonoBehaviour
 		_renderer.material = _hitMaterial;
 		yield return new WaitForSeconds(_blinkTime);
 		_renderer.material = _cachedMaterial;
-	}
-
-	private void OnDisable()
-	{
-		_hitable.OnHitEvent -= OnTakeHit;
 	}
 }

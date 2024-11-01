@@ -42,5 +42,4 @@ public class EnemySpawner : MonoBehaviour
 
 		createdEnemy.transform.position = new Vector3(posX, 0, posZ);
 	}
-
 }

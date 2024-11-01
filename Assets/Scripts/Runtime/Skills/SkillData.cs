@@ -7,5 +7,5 @@ public class SkillData : ScriptableObject
 	public SkillScriptableEnum Enum { get; private set; }
 
 	[field: SerializeField]
-	public float Cooldown { get; private set; }
+	public FloatPerLevel Cooldown { get; private set; }
 }

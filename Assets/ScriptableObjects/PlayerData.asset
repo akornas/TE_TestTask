@@ -15,4 +15,15 @@ MonoBehaviour:
   <Health>k__BackingField: 0
   <MoveSpeed>k__BackingField: 5
   <ShootDelay>k__BackingField: 0.1
+  <Damage>k__BackingField:
+    _valuePerLevel:
+    - 1
+    - 2.5
+    - 5
   <SkillData>k__BackingField: {fileID: 11400000, guid: adb9673e8c0338f44a22e8a14396999a, type: 2}
+  <XpNeededForLevel>k__BackingField:
+    _valuePerLevel: 000000000a00000032000000
+  <GameplayData>k__BackingField:
+    _score: 0
+    _xp: 0
+    _level: 0
