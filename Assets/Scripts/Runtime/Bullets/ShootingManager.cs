@@ -58,7 +58,7 @@ public class ShootingManager : MonoBehaviour
 			bullet.transform.position = _spawnPlace.position;
 			bullet.SetHitData(_playerData.GetBaseHitData());
 
-			var behaviour = _bulletBehaviourFactory.GetBehaviourFor(_playerData.SkillData.Enum);
+			var behaviour = _bulletBehaviourFactory.Create(_playerData.SkillData.Enum);
 			bullet.AddBehaviour(behaviour);
 			_cooldownManager.AddSkillCooldown(_playerData.SkillData);
 		}

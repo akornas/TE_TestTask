@@ -17,6 +17,6 @@ public class PlayerData : ScriptableObject
 
 	public HitData GetBaseHitData()
 	{
-		return new HitData(20);
+		return new HitData(1);
 	}
 }

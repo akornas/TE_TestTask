@@ -8,7 +8,7 @@ public class BulletBehaviourFactory : MonoBehaviour
 	[SerializeField]
 	private List<ScriptableEnumBehaviourPoolPair> _behaviourPoolsLookUp;
 
-	public BulletBehaviour GetBehaviourFor(SkillScriptableEnum skillEnum)
+	public BulletBehaviour Create(SkillScriptableEnum skillEnum)
 	{
 		var enumBehaviourPoolPair = _behaviourPoolsLookUp.FirstOrDefault(pair => pair.SkillEnum.Equals(skillEnum));
 

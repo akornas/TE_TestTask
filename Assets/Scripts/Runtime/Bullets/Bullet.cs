@@ -61,7 +61,8 @@ public class Bullet : MonoBehaviour
 
 	private void HandleHitable(Collision collision)
 	{
-		if (collision.gameObject.TryGetComponent<IHitable>(out var hitable))
+		var hitable = collision.gameObject.GetComponentInChildren<IHitable>();
+		if (hitable != null)
 		{
 			hitable.Hit(_hitData);
 		}
