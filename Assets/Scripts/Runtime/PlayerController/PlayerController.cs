@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	public event System.Action OnPlayerDeathEvent;
+
 	[SerializeField]
 	private InputController _inputController;
 
@@ -14,10 +17,21 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private ScriptableEventWithEnemyData _eventWithEnemyData;
 
+	[SerializeField]
+	private List<EnemyEventData> _enemyAttackEventDatas;
+
+	[SerializeField]
+	private AreaSizeProvider _areaSizeProvider;
+
 	private void OnEnable()
 	{
 		_inputController.OnMoveEvent += OnMove;
 		_eventWithEnemyData.OnEvent += OnEnemyKilled;
+
+		foreach (var enemyEvent in _enemyAttackEventDatas)
+		{
+			enemyEvent.OnEvent += OnEnemyAttack;
+		}
 	}
 
 	private void OnEnemyKilled(EnemyData obj)
@@ -26,16 +40,40 @@ public class PlayerController : MonoBehaviour
 		_playerData.GameplayData.Score += obj.Score;
 	}
 
+	private void OnEnemyAttack()
+	{
+		_playerData.GameplayData.Health -= 1;
+
+		CheckDeath();
+	}
+
+	private void CheckDeath()
+	{
+		if (_playerData.GameplayData.Health <= 0)
+		{
+			OnPlayerDeathEvent?.Invoke();
+		}
+	}
+
 	private void OnMove(Vector2 moveVector)
 	{
 		var position = _root.transform.localPosition;
 		position.x += moveVector.x * _playerData.MoveSpeed * Time.deltaTime;
-		_root.transform.localPosition = position;
+
+		if (position.x > _areaSizeProvider.AreaWidthInWorldSpace.x && position.x < _areaSizeProvider.AreaWidthInWorldSpace.y)
+		{
+			_root.transform.localPosition = position;
+		}
 	}
 
 	private void OnDisable()
 	{
 		_inputController.OnMoveEvent -= OnMove;
 		_eventWithEnemyData.OnEvent -= OnEnemyKilled;
+
+		foreach (var enemyEvent in _enemyAttackEventDatas)
+		{
+			enemyEvent.OnEvent -= OnEnemyAttack;
+		}
 	}
 }

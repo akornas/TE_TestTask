@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
 	[field: SerializeField]
-	public float Health { get; private set; }
-
-	[field: SerializeField]
 	public float MoveSpeed { get; private set; }
 
 	[field: SerializeField]
@@ -65,6 +62,9 @@ public class GameplayPlayerData
 	[SerializeField]
 	private int _level = 0;
 
+	[SerializeField]
+	private int _health = 0;
+
 	public int Score
 	{
 		get => _score;
@@ -104,10 +104,34 @@ public class GameplayPlayerData
 		}
 	}
 
+	public int Health
+	{
+		get => _health;
+		set
+		{
+			if (_health != value)
+			{
+				_health = value;
+				OnDataChangedEvent?.Invoke();
+			}
+		}
+	}
+
 	public void Initialize()
+	{
+		SetDefaultValues();
+	}
+
+	public void Clear()
+	{
+		SetDefaultValues();
+	}
+
+	private void SetDefaultValues()
 	{
 		_score = 0;
 		_xp = 0;
 		_level = 0;
+		_health = 10;
 	}
 }
