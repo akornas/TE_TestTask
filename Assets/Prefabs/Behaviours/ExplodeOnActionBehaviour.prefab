@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerData: {fileID: 11400000, guid: 06aabb6ba38a561409d2b8d61b789003, type: 2}
   _explodeActionReference: {fileID: 1186425662084205548, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _radius: 5
+  _model: {fileID: 8462334410510103679}
 --- !u!1 &8462334410510103679
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +61,7 @@ GameObject:
   - component: {fileID: 5044888297568909470}
   - component: {fileID: 8234074631925656437}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +77,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8827771708916512269}

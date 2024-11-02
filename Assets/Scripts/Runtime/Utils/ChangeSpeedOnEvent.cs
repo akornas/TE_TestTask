@@ -10,7 +10,7 @@ public class ChangeSpeedOnEvent : AbstractOnEvent
 
 	protected override void InternalOnEventHandler()
 	{
-		var valueToAdd = _moveRootOnUpdate.Speed * _speedPercentageMultiplier / 100f;
-		_moveRootOnUpdate.AddSpeedMultiplier(valueToAdd);
+		var boostValue = _speedPercentageMultiplier / 100f;
+		_moveRootOnUpdate.AddSpeedBoost(boostValue);
 	}
 }

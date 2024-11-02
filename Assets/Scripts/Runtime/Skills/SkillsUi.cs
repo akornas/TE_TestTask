@@ -10,6 +10,7 @@ public class SkillsUi : MonoBehaviour
 
 	private void OnEnable()
 	{
+		OnRefreshSkillOnCooldown();
 		_cooldownManager.OnRefreshSkillOnCooldownEvent += OnRefreshSkillOnCooldown;
 	}
 

@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 		_pool = pool;
 
 		_damageable.SetupHealth(_data.Health);
-		_moveRootOnUpdate.SetSpeedMultiplier(_data.SpeedMultiplier);
+		_moveRootOnUpdate.InitializeSpeed(_data.SpeedMultiplier);
 		_damageable.OnDeathEvent += OnDeath;
 		_renderer.material.color = ColorHelper.GetRandomColor();
 	}

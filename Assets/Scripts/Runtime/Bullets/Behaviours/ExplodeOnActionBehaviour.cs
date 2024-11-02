@@ -9,9 +9,26 @@ public class ExplodeOnActionBehaviour : BulletBehaviour
 	[SerializeField]
 	private InputActionReference _explodeActionReference;
 
+	[SerializeField]
+	private float _radius = 5;
+
+	[SerializeField]
+	private GameObject _model;
+
 	private void OnEnable()
 	{
+		HandleModel();
 		_explodeActionReference.action.performed += OnActionPerformed;
+	}
+
+	private void HandleModel()
+	{
+		if (_model == null)
+		{
+			return;
+		}
+
+		_model.transform.localScale = Vector3.one * _radius * 2;
 	}
 
 	private void OnActionPerformed(InputAction.CallbackContext obj)
@@ -22,7 +39,7 @@ public class ExplodeOnActionBehaviour : BulletBehaviour
 
 	private void ExplosionDamage()
 	{
-		var hitColliders = Physics.OverlapSphere(this.transform.position, 5);
+		var hitColliders = Physics.OverlapSphere(this.transform.position, _radius);
 
 		foreach (var hitCollider in hitColliders)
 		{

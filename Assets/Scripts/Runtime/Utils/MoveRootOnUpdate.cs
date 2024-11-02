@@ -14,18 +14,20 @@ public class MoveRootOnUpdate : MonoBehaviour
 	private Vector3 _direction = Vector3.forward;
 
 	private float _speedMultiplier = 1;
+	private float _speedBoost = 1;
 
-	public float Speed => _speed * _speedMultiplier;
+	public float Speed => _speed * _speedMultiplier * _speedBoost;
 
-	public void SetSpeedMultiplier(float multiplier)
+	public void InitializeSpeed(float multiplier)
 	{
+		_speedBoost = 1;
 		_speedMultiplier = multiplier;
 		OnChangeSpeedEvent?.Invoke();
 	}
 
-	public void AddSpeedMultiplier(float valueToAdd)
+	public void AddSpeedBoost(float value)
 	{
-		_speedMultiplier += valueToAdd;
+		_speedBoost += value;
 		OnChangeSpeedEvent?.Invoke();
 	}
 
