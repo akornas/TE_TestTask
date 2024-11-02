@@ -39,10 +39,17 @@ public class ShootingManager : MonoBehaviour
 		if (CanShoot())
 		{
 			_lastShootTime = Time.timeSinceLevelLoad;
-			var bullet = _bulletPool.Get();
-			bullet.transform.position = _spawnPlace.position;
-			bullet.SetHitData(_playerData.GetBaseHitData());
+			CreateBullet();
 		}
+	}
+
+	private Bullet CreateBullet()
+	{
+		var bullet = _bulletPool.Get();
+		bullet.transform.position = _spawnPlace.position;
+		bullet.SetHitData(_playerData.GetBaseHitData());
+
+		return bullet;
 	}
 
 	private bool CanShoot()
@@ -52,16 +59,20 @@ public class ShootingManager : MonoBehaviour
 
 	private void OnUseSkill()
 	{
-		if (_cooldownManager.CanUseSkill(_playerData.SkillData.Enum))
-		{
-			var bullet = _bulletPool.Get();
-			bullet.transform.position = _spawnPlace.position;
-			bullet.SetHitData(_playerData.GetBaseHitData());
+		var skillData = _playerData.SkillData;
 
-			var behaviour = _bulletBehaviourFactory.Create(_playerData.SkillData.Enum);
-			bullet.AddBehaviour(behaviour);
-			_cooldownManager.AddSkillCooldown(_playerData.SkillData);
+		if (_cooldownManager.CanUseSkill(skillData.Enum))
+		{
+			var bullet = CreateBullet();
+			AddBehaviourToBullet(skillData, bullet);
 		}
+	}
+
+	private void AddBehaviourToBullet(SkillData skillData, Bullet bullet)
+	{
+		var behaviour = _bulletBehaviourFactory.Create(skillData.Enum);
+		bullet.AddBehaviour(behaviour);
+		_cooldownManager.AddSkillCooldown(skillData);
 	}
 
 	private void OnDisable()

@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 	private float _spawnDelay = 1;
 
 	[SerializeField]
-	private AreaSizeProvider _areaSizeProvider;
+	private AreaBoundsProvider _areaSizeProvider;
 
 	private float _lastSpawnTime = 0;
 
@@ -37,8 +37,8 @@ public class EnemySpawner : MonoBehaviour
 	{
 		_lastSpawnTime = Time.timeSinceLevelLoad;
 		var createdEnemy = _enemyFactory.Create();
-		var posX = Random.Range(_areaSizeProvider.AreaWidthInWorldSpace.x, _areaSizeProvider.AreaWidthInWorldSpace.y);
-		var posZ = _areaSizeProvider.AreaDeepthInWorldSpace.x;
+		var posX = Random.Range(_areaSizeProvider.WidthInWorldSpace.x, _areaSizeProvider.WidthInWorldSpace.y);
+		var posZ = _areaSizeProvider.DeepthInWorldSpace.x;
 
 		createdEnemy.transform.position = new Vector3(posX, 0, posZ);
 	}

@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 	private List<EnemyEventData> _enemyAttackEventDatas;
 
 	[SerializeField]
-	private AreaSizeProvider _areaSizeProvider;
+	private AreaBoundsProvider _areaSizeProvider;
 
 	private void OnEnable()
 	{
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 		var position = _root.transform.localPosition;
 		position.x += moveVector.x * _playerData.MoveSpeed * Time.deltaTime;
 
-		if (position.x > _areaSizeProvider.AreaWidthInWorldSpace.x && position.x < _areaSizeProvider.AreaWidthInWorldSpace.y)
+		if (position.x > _areaSizeProvider.WidthInWorldSpace.x && position.x < _areaSizeProvider.WidthInWorldSpace.y)
 		{
 			_root.transform.localPosition = position;
 		}

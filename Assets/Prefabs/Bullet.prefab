@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5719598027517849689}
   - component: {fileID: 2174938389518930412}
   - component: {fileID: 1039581602424478165}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5394266723812904888}
   - component: {fileID: 621225928316959028}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _root: {fileID: 5719598027517849689}
   _speed: 5
+  _direction: {x: 0, y: 0, z: 1}
 --- !u!1 &5343003937054190524
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6268033703997463591}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Behaviours
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +166,7 @@ GameObject:
   - component: {fileID: 1241859173980513581}
   - component: {fileID: 7530263460105592839}
   - component: {fileID: 145549567928063919}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8807103895900888398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 579766872622349671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Logic
   m_TagString: Untagged
   m_Icon: {fileID: 0}

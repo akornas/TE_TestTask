@@ -21,19 +21,24 @@ public abstract class AbstractMonoBehaviourPool<T> : MonoBehaviour where T : Mon
 	protected virtual void OnReturnedToPool(T @object)
 	{
 		@object.gameObject.SetActive(false);
-		@object.transform.SetParent(this.transform);
+		SetParent(@object, this.transform);
 	}
 
 	protected virtual void OnTakeFromPool(T @object)
 	{
 		@object.gameObject.SetActive(true);
-		@object.transform.SetParent(null);
+		SetParent(@object, null);
 	}
 
 	protected virtual void OnDestroyPoolObject(T @object)
 	{
 		@object.gameObject.SetActive(false);
-		@object.transform.SetParent(this.transform);
+		SetParent(@object, this.transform);
+	}
+
+	private void SetParent(T @object, Transform parent)
+	{
+		@object.transform.SetParent(parent);
 	}
 
 	public T Get()
