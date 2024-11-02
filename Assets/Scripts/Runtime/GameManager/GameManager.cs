@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	private const string END_GAME_UI_ADDRESS = "EndGameUi";
+
+	[SerializeField]
+	private AddressableManager _addressableManager;
+
 	[SerializeField]
 	private PlayerController _playerController;
 
@@ -21,7 +26,15 @@ public class GameManager : MonoBehaviour
 	private void OnEndGame()
 	{
 		Time.timeScale = 0;
-		_endGameUi.SetActive();
+		_addressableManager.Load(END_GAME_UI_ADDRESS, OnUiLoaded);
+	}
+
+	private void OnUiLoaded(GameObject loadedObject)
+	{
+		if (loadedObject.TryGetComponent<EndGameUi>(out var endGameUi))
+		{
+			endGameUi.AssignRestartAction(RestartGame);
+		}
 	}
 
 	private void InitializeGame()
@@ -29,7 +42,7 @@ public class GameManager : MonoBehaviour
 		_playerData.GameplayData.Initialize();
 	}
 
-	public void ReloadGame()
+	public void RestartGame()
 	{
 		Time.timeScale = 1;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);

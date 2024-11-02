@@ -54,15 +54,11 @@ public class GameplayPlayerData
 	public event System.Action OnDataChangedEvent;
 
 	[SerializeField]
+	private int _maxHealth = 0;
+
 	private int _score = 0;
-
-	[SerializeField]
 	private int _xp = 0;
-
-	[SerializeField]
 	private int _level = 0;
-
-	[SerializeField]
 	private int _health = 0;
 
 	public int Score
@@ -132,6 +128,6 @@ public class GameplayPlayerData
 		_score = 0;
 		_xp = 0;
 		_level = 0;
-		_health = 10;
+		_health = _maxHealth;
 	}
 }

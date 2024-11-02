@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -9,13 +10,20 @@ public class EndGameUi : MonoBehaviour
 	[SerializeField]
 	private TextMeshProUGUI _scoreLabel;
 
+	private Action _onRestartGameAction;
+
 	private void OnEnable()
 	{
 		_scoreLabel.text = $"{_playerData.GameplayData.Score}";
 	}
 
-	public void SetActive()
+	public void AssignRestartAction(Action action)
 	{
-		this.gameObject.SetActive(true);
+		_onRestartGameAction = action;
+	}
+
+	public void OnRestartGameButton()
+	{
+		_onRestartGameAction?.Invoke();
 	}
 }

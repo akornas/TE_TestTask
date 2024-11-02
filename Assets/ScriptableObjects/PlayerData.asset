@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370aeda3c5d9c6c4f9ddb5051b106bc9, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
   <MoveSpeed>k__BackingField: 5
   <ShootDelay>k__BackingField: 0.1
   <Damage>k__BackingField:
@@ -24,6 +23,4 @@ MonoBehaviour:
   <XpNeededForLevel>k__BackingField:
     _valuePerLevel: 000000000a00000032000000
   <GameplayData>k__BackingField:
-    _score: 0
-    _xp: 0
-    _level: 0
+    _maxHealth: 10
