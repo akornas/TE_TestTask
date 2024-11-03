@@ -22,9 +22,20 @@ public class PlayerData : ScriptableObject
 	[field: SerializeField]
 	public GameplayPlayerData GameplayData { get; private set; }
 
+	private HitData _baseHitData;
+
 	public HitData GetBaseHitData()
 	{
-		return new HitData(Damage.ValuePerLevel(GameplayData.Level));
+		TryBaseCreateHitData();
+		return _baseHitData;
+	}
+
+	private void TryBaseCreateHitData()
+	{
+		if (_baseHitData.Damage != Damage.ValuePerLevel(GameplayData.Level))
+		{
+			_baseHitData = new HitData(Damage.ValuePerLevel(GameplayData.Level));
+		}
 	}
 
 	public void AddXp(int value)
@@ -37,8 +48,14 @@ public class PlayerData : ScriptableObject
 	{
 		if (CanLevelUp())
 		{
-			GameplayData.Level += 1;
+			LevelUp();
 		}
+	}
+
+	private void LevelUp()
+	{
+		GameplayData.Level += 1;
+		TryBaseCreateHitData();
 	}
 
 	private bool CanLevelUp()

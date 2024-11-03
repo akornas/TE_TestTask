@@ -37,6 +37,11 @@ public class EnemySpawner : MonoBehaviour
 	{
 		_lastSpawnTime = Time.timeSinceLevelLoad;
 		var createdEnemy = _enemyFactory.Create();
+		SetEnemyOnRandomPosition(createdEnemy);
+	}
+
+	private void SetEnemyOnRandomPosition(Enemy createdEnemy)
+	{
 		var posX = Random.Range(_areaSizeProvider.WidthInWorldSpace.x, _areaSizeProvider.WidthInWorldSpace.y);
 		var posZ = _areaSizeProvider.DeepthInWorldSpace.x;
 

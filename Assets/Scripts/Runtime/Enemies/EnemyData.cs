@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
 	[field: SerializeField]
-	public int SpawnChance { get; private set; }
+	public int SpawnProbability { get; private set; }
 
 	[field: SerializeField]
 	public float SpeedMultiplier { get; private set; }

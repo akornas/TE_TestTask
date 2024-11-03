@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Skill_2",
-                    "type": "Button",
-                    "id": "5bf59a4b-c24f-409d-bd40-ee938f5c64a4",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -128,28 +119,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Skill_1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "addf31f3-8976-4bfc-b21c-df0b739953f5",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Skill_2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c81927d-d1b0-4e9f-8d6f-bd9592ff7ca4",
-                    "path": "<Keyboard>/t",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Skill_2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

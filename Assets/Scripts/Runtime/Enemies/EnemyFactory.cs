@@ -7,13 +7,13 @@ public class EnemyFactory : AbstractEnemyFactory
 	private List<EnemyData> _enemies;
 
 	[SerializeField]
-	private List<int> _percentageSpawnChance = new();
+	private List<int> _percentageSpawnProbability = new();
 	private readonly Dictionary<EnemyData, EnemyPool> _enemyPools = new();
 
 	private void OnEnable()
 	{
 		CreateEnemyPools();
-		FillPercentageSpawnChanceList();
+		FillPercentageSpawnProbabilityList();
 	}
 
 	private void CreateEnemyPools()
@@ -25,33 +25,51 @@ public class EnemyFactory : AbstractEnemyFactory
 		}
 	}
 
-	private void FillPercentageSpawnChanceList()
+	private void FillPercentageSpawnProbabilityList()
 	{
-		int previousSpawnChances = 0;
+		int previousSpawnProbabilities = 0;
 		for (int i = 0; i < _enemies.Count; i++)
 		{
-			_percentageSpawnChance.Add(previousSpawnChances + _enemies[i].SpawnChance);
-			previousSpawnChances += _enemies[i].SpawnChance;
+			_percentageSpawnProbability.Add(previousSpawnProbabilities + _enemies[i].SpawnProbability);
+			previousSpawnProbabilities += _enemies[i].SpawnProbability;
 		}
 	}
 
 	public override Enemy Create()
 	{
+		var poolIndex = FindPoolIndex();
+		var pool = GetPool(poolIndex);
+		var enemy = InitializeEnemy(_enemies[poolIndex], pool);
+
+		return enemy;
+	}
+
+	private int FindPoolIndex()
+	{
 		var randomNumber = Random.Range(0, 100);
 
-		for (int i = 0; i < _percentageSpawnChance.Count; i++)
+		for (int i = 0; i < _percentageSpawnProbability.Count; i++)
 		{
-			if (randomNumber < _percentageSpawnChance[i])
+			if (randomNumber < _percentageSpawnProbability[i])
 			{
-				var pool = _enemyPools[_enemies[i]];
-				var enemy = pool.Get();
-
-				enemy.Initialize(_enemies[i], pool);
-				enemy.transform.SetParent(this.transform);
-				return enemy;
+				return i;
 			}
 		}
 
-		return null;
+		return 0;
+	}
+
+	private EnemyPool GetPool(int poolIndex)
+	{
+		return _enemyPools[_enemies[poolIndex]];
+	}
+
+	private Enemy InitializeEnemy(EnemyData data, EnemyPool pool)
+	{
+		var enemy = pool.Get();
+		enemy.Initialize(data, pool);
+		enemy.transform.SetParent(this.transform);
+
+		return enemy;
 	}
 }

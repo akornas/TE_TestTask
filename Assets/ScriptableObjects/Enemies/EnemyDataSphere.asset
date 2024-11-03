@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fce2998d443484490fad4535fe489d, type: 3}
   m_Name: EnemyDataSphere
   m_EditorClassIdentifier: 
-  <SpawnChance>k__BackingField: 25
+  <SpawnProbability>k__BackingField: 25
   <SpeedMultiplier>k__BackingField: 1.5
   <Health>k__BackingField: 1
   <Score>k__BackingField: 2

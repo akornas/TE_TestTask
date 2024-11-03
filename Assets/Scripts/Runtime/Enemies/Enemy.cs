@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 
 		_damageable.SetupHealth(_data.Health);
 		_moveRootOnUpdate.InitializeSpeed(_data.SpeedMultiplier);
-		_damageable.OnDeathEvent += OnDeath;
+		_damageable.OnDamagedEvent += OnDeath;
 		_renderer.material.color = ColorHelper.GetRandomColor();
 	}
 
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		_damageable.OnDeathEvent -= OnDeath;
+		_damageable.OnDamagedEvent -= OnDeath;
 
 		InvokeEvents();
 		BackToPool();

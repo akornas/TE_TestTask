@@ -43,6 +43,11 @@ public class ShootingManager : MonoBehaviour
 		}
 	}
 
+	private bool CanShoot()
+	{
+		return Time.timeSinceLevelLoad - _lastShootTime > _playerData.ShootDelay;
+	}
+
 	private Bullet CreateBullet()
 	{
 		var bullet = _bulletPool.Get();
@@ -52,20 +57,20 @@ public class ShootingManager : MonoBehaviour
 		return bullet;
 	}
 
-	private bool CanShoot()
-	{
-		return Time.timeSinceLevelLoad - _lastShootTime > _playerData.ShootDelay;
-	}
-
 	private void OnUseSkill()
 	{
 		var skillData = _playerData.SkillData;
 
-		if (_cooldownManager.CanUseSkill(skillData.Enum))
+		if (CanUseSkill(skillData))
 		{
 			var bullet = CreateBullet();
 			AddBehaviourToBullet(skillData, bullet);
 		}
+	}
+
+	private bool CanUseSkill(SkillData skillData)
+	{
+		return _cooldownManager.IsSkillOnCooldown(skillData.Enum);
 	}
 
 	private void AddBehaviourToBullet(SkillData skillData, Bullet bullet)

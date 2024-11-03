@@ -24,14 +24,15 @@ public class Bullet : MonoBehaviour
 	{
 		bulletBehaviour.transform.SetParent(_behavioursRoot);
 		bulletBehaviour.transform.localPosition = Vector3.zero;
-
 		bulletBehaviour.OnReleasedEvent += OnReleasedBehaviour;
+
 		_behaviours.Add(bulletBehaviour);
 	}
 
 	private void OnReleasedBehaviour(BulletBehaviour releasedBehaviour)
 	{
 		releasedBehaviour.OnReleasedEvent -= OnReleasedBehaviour;
+
 		BackToPool();
 		_behaviours.Remove(releasedBehaviour);
 	}

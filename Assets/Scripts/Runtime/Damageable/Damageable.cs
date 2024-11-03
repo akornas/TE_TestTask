@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-	public event System.Action OnDeathEvent;
+	public event System.Action OnDamagedEvent;
 	public event System.Action OnChangeHealthEvent;
 
 	[SerializeField]
@@ -49,7 +49,7 @@ public class Damageable : MonoBehaviour
 	{
 		if (_health <= 0)
 		{
-			OnDeathEvent?.Invoke();
+			OnDamagedEvent?.Invoke();
 			Destroy(_root);
 		}
 	}

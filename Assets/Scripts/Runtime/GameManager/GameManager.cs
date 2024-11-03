@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
 	private void OnEndGame()
 	{
-		Time.timeScale = 0;
+		TimeManager.PauseTime();
 		_addressableManager.Load(END_GAME_UI_ADDRESS, OnUiLoaded);
 	}
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
 	public void RestartGame()
 	{
-		Time.timeScale = 1;
+		TimeManager.ResumeTime();
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 

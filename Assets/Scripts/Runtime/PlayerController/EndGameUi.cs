@@ -26,4 +26,9 @@ public class EndGameUi : MonoBehaviour
 	{
 		_onRestartGameAction?.Invoke();
 	}
+
+	private void OnDestroy()
+	{
+		_onRestartGameAction = null;
+	}
 }

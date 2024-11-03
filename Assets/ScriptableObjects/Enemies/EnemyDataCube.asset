@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fce2998d443484490fad4535fe489d, type: 3}
   m_Name: EnemyDataCube
   m_EditorClassIdentifier: 
-  <SpawnChance>k__BackingField: 50
+  <SpawnProbability>k__BackingField: 50
   <SpeedMultiplier>k__BackingField: 1
   <Health>k__BackingField: 2
   <Score>k__BackingField: 1

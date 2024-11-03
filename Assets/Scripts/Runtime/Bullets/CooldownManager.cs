@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CooldownManager : MonoBehaviour
 {
+	public event System.Action OnRefreshSkillOnCooldownEvent;
+
 	[SerializeField]
 	private PlayerData _playerData;
-
-	public event System.Action OnRefreshSkillOnCooldownEvent;
 
 	private SkillData _skillOnCooldown;
 	private float _currentCooldownTime;
@@ -13,7 +13,7 @@ public class CooldownManager : MonoBehaviour
 	public float CurrentCooldownTime => _currentCooldownTime;
 	public SkillData CurrentSkillOnCooldown => _skillOnCooldown;
 
-	public bool CanUseSkill(SkillScriptableEnum skillEnum)
+	public bool IsSkillOnCooldown(SkillScriptableEnum skillEnum)
 	{
 		return _skillOnCooldown == null || !_skillOnCooldown.Enum.Equals(skillEnum);
 	}
@@ -30,6 +30,7 @@ public class CooldownManager : MonoBehaviour
 		{
 			return;
 		}
+
 		UpdateCounter();
 		OnRefreshSkillOnCooldownEvent?.Invoke();
 	}
@@ -38,7 +39,7 @@ public class CooldownManager : MonoBehaviour
 	{
 		_currentCooldownTime -= Time.deltaTime;
 
-		if (_currentCooldownTime < 0)
+		if (_currentCooldownTime <= 0)
 		{
 			_skillOnCooldown = null;
 		}

@@ -26,12 +26,12 @@ public class EnemyUi : MonoBehaviour
 
 	private void OnChangeHealth()
 	{
-		_healthLabel.text = $"{_damageable.Health}/{_damageable.MaxHealth}";
+		_healthLabel.text = $"{_damageable.Health:F1}/{_damageable.MaxHealth:F1}";
 	}
 
 	private void OnChangeSpeed()
 	{
-		_speedLabel.text = $"{_moveRootOnUpdate.Speed}";
+		_speedLabel.text = $"{_moveRootOnUpdate.Speed:F1}";
 	}
 
 	private void OnDisable()
